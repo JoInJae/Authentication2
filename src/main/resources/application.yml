@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: local
+  jpa:
+    open-in-view: true
+    show-sql: true
+    generate-ddl: false
+    database: sql_server
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/sb_db?characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Seoul&amp&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: rowan0810
+    driver-class-name: com.mysql.cj.jdbc.Driver
