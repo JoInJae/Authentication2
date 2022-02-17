@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity@Table(name = "brain_user_account")
 @Getter@NoArgsConstructor
 @AttributeOverrides(
-        @AttributeOverride(name = "idx", column = @Column(name = "user_account_idx", nullable = false, updatable = false))
+        @AttributeOverride(name = "idx", column = @Column(name = "user_account_idx", columnDefinition = "BIGINT",nullable = false, updatable = false))
 )
 public class UserAccount extends BaseEntity {
 
@@ -33,6 +33,10 @@ public class UserAccount extends BaseEntity {
 
     @Column(name = "user_account_yn_active", columnDefinition = "ENUM('Y', 'N')", nullable = false)
     @Convert(converter = YesOrNoConvert.class)
-    private Boolean active = false;
+    private final Boolean active = false;
+
+    public boolean isActive(){
+        return !active;
+    }
 
 }
