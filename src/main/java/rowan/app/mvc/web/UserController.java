@@ -1,26 +1,31 @@
 package rowan.app.mvc.web;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import rowan.app.data.dto.request.LoginParam;
+import rowan.app.data.dto.response.LoginResult;
+import rowan.app.data.dto.response.Response;
+import rowan.app.data.type.ResponseType;
 import rowan.app.mvc.service.UserService;
-import rowan.app.util.KmsUtil;
+import rowan.app.utils.JwtUtil;
+
+import javax.validation.Valid;
+import java.lang.invoke.WrongMethodTypeException;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value = "/auth/user")
 public class UserController {
 
     private final UserService userService;
 
-    private final KmsUtil kmsUtil;
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    private Response login(@Valid @RequestBody LoginParam.Basic param, BindingResult bindingResult){
 
-    @GetMapping(value = "/")
-    public String index(){
+        if(bindingResult.hasErrors()) throw new WrongMethodTypeException();
 
-        System.out.println(kmsUtil.generate());
-
-        userService.test();
-        return "abc";
+        return Response.set(ResponseType.SUCCESS, userService.login(param.getId(), param.getPassword()));
 
     }
 

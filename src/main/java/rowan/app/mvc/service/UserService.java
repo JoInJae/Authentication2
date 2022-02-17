@@ -1,9 +1,9 @@
 package rowan.app.mvc.service;
 
-import org.springframework.stereotype.Service;
+import rowan.app.data.dto.response.LoginResult;
 
 public interface UserService {
 
-    void test();
+    LoginResult.Basic login(String id, String password);
 
 }
