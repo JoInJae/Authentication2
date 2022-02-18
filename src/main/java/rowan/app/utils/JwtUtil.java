@@ -1,5 +1,7 @@
 package rowan.app.utils;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -45,6 +47,10 @@ public class JwtUtil {
                 .setClaims(claims)
                 .compact();
 
+    }
+
+    public Jws<Claims> parse(String input){
+        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(Base64.getDecoder().decode(JwtDataKey.getInstance().getSecret()))).build().parseClaimsJws(input);
     }
 
     private JwtBuilder jwtBuilder(){

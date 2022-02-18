@@ -30,4 +30,11 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    private Response logout(){
+
+        return null;
+
+    }
+
 }

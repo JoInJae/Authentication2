@@ -10,4 +10,6 @@ public interface UserService {
 
     void user_log_put(String id, ServiceType serviceType, UserLogType userLogType, String etc);
 
+    void test();
+
 }

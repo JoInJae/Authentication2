@@ -1,11 +1,10 @@
 package rowan.app.mvc.service.impl;
 
-import com.amazonaws.services.kms.model.DisabledException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import rowan.app.conf.exception.client.InactiveUserException;
-import rowan.app.conf.exception.client.WrongUserIdException;
-import rowan.app.conf.exception.client.WrongUserPasswordException;
+import rowan.app.conf.exception.client.login.InactiveUserException;
+import rowan.app.conf.exception.client.login.WrongUserIdException;
+import rowan.app.conf.exception.client.login.WrongUserPasswordException;
 import rowan.app.data.dto.response.LoginResult;
 import rowan.app.data.type.ServiceType;
 import rowan.app.data.type.UserLogType;
@@ -15,7 +14,6 @@ import rowan.app.mvc.repo.UserRepositoryCustom;
 import rowan.app.mvc.repo.impl.UserAccountRepository;
 import rowan.app.mvc.service.UserService;
 import rowan.app.utils.JwtUtil;
-
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -37,21 +35,15 @@ public class UserServiceImpl implements UserService {
 
         Optional<UserAccount> isAccount = userAccountRepository.getByUserId(id);
 
-        if(isAccount.isEmpty()){
-            throw new WrongUserIdException(id);
-        }
+        if(isAccount.isEmpty()) throw new WrongUserIdException(id);
 
         UserAccount account = isAccount.get();
 
         boolean check = account.getPassword().password_match(password);
 
-        if(check){
-            throw new WrongUserPasswordException(id, password);
-        }
+        if(check) throw new WrongUserPasswordException(id, password);
 
-        if(account.isActive()){
-            throw new InactiveUserException(id);
-        }
+        if(!account.getActive()) throw new InactiveUserException(id);
 
         return LoginResult.Basic.builder().access(jwtUtil.createAccessToken(account.getUserId())).refresh(jwtUtil.createRefreshToken(account.getUserId())).build();
 
@@ -63,10 +55,17 @@ public class UserServiceImpl implements UserService {
 
         UserLog log = UserLog.builder().userId(id).serviceType(serviceType).logType(userLogType).etc(etc).build();
 
-
+        em.persist(log);
 
     }
 
+    @Transactional
+    @Override
+    public void test() {
+
+        userRepositoryCustom.update_hashed_password();
+
+    }
 
 
 }

@@ -7,7 +7,9 @@ import lombok.Getter;
 @Getter
 public enum ServiceType {
 
-    MEET("연구과제"),
+    HOSPITAL("병의원"),
+
+    RCT("연구과제"),
 
     CENTER("센터"),
 

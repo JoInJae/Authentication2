@@ -1,23 +1,23 @@
 package rowan.app;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import rowan.app.data.type.TokenType;
+import rowan.app.mvc.service.UserService;
 
 import java.util.Date;
 
 @SpringBootTest
 class AuthenticationApplicationTests {
 
+    @Autowired
+    private UserService userService;
+
     @Test
     void contextLoads() {
 
-        Date date = new Date();
-
-        System.out.println(new Date(date.getTime() + TokenType.ACCESS_TOKEN.getExpiredTime()));
-
-
-        System.out.println(new Date(new Date().getTime() + TokenType.ACCESS_TOKEN.getExpiredTime()));
 
     }
 

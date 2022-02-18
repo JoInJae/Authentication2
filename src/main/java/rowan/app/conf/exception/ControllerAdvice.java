@@ -5,10 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import rowan.app.conf.exception.client.InactiveUserException;
+import rowan.app.conf.exception.client.login.InactiveUserException;
 import rowan.app.conf.exception.client.WrongParameterException;
-import rowan.app.conf.exception.client.WrongUserIdException;
-import rowan.app.conf.exception.client.WrongUserPasswordException;
+import rowan.app.conf.exception.client.login.WrongUserIdException;
+import rowan.app.conf.exception.client.login.WrongUserPasswordException;
 import rowan.app.data.dto.response.Response;
 import rowan.app.data.type.UserLogType;
 import rowan.app.mvc.service.UserService;
@@ -46,7 +46,7 @@ public class ControllerAdvice {
             default: break;
         }
 
-        userService.user_log_put(e.getUserId(), null, userLogType, (String)e.getObject());
+        //userService.user_log_put(e.getUserId(), null, userLogType, (String)e.getObject());
 
         return Response.set(e.getResponseType());
 

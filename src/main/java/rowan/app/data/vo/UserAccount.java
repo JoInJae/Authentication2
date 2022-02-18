@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import rowan.app.data.vo.base.BaseEntity;
 import rowan.app.data.vo.embed.Password;
+import rowan.app.data.vo.transform.PasswordConvert;
 import rowan.app.data.vo.transform.YesOrNoConvert;
 
 import javax.persistence.*;
@@ -18,11 +19,14 @@ public class UserAccount extends BaseEntity {
     @Column(name = "user_account_id", columnDefinition = "VARCHAR(50)", nullable = false)
     private String userId;
 
-    @AttributeOverrides({
-            @AttributeOverride(name = "password", column =  @Column(name = "user_account_password", columnDefinition = "CHAR(64)", nullable = false)),
-            @AttributeOverride(name = "salt", column =  @Column(name = "user_account_salt", columnDefinition = "CHAR(12)", nullable = false))
-    })
-    @Embedded
+    @Column(name = "user_account_password")
+    private String pw;
+
+    @Column(name = "user_account_salt")
+    private String salt;
+
+    @Column(name = "user_account_hashed_password", columnDefinition = "CHAR(76)", nullable = false)
+    @Convert(converter = PasswordConvert.class)
     private Password password;
 
     @Column(name = "user_account_token_push", columnDefinition = "LONGTEXT")
@@ -34,9 +38,5 @@ public class UserAccount extends BaseEntity {
     @Column(name = "user_account_yn_active", columnDefinition = "ENUM('Y', 'N')", nullable = false)
     @Convert(converter = YesOrNoConvert.class)
     private final Boolean active = false;
-
-    public boolean isActive(){
-        return !active;
-    }
 
 }
