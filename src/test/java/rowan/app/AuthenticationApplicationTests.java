@@ -22,7 +22,6 @@ class AuthenticationApplicationTests {
     @Test
     void contextLoads() {
 
-        System.out.println(appService.getService("HOSPITAL"));
 
     }
 
