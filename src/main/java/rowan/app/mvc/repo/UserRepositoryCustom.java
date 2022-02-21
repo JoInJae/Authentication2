@@ -15,7 +15,7 @@ public class UserRepositoryCustom {
 
     public void update_hashed_password(){
 
-        query.update(q_user_account).set(q_user_account.password.hashedPassword, q_user_account.pw.stringValue().append(q_user_account.salt.stringValue())).execute();
+        //query.update(q_user_account).set(q_user_account.password.hashedPassword, q_user_account.pw.stringValue().append(q_user_account.salt.stringValue())).execute();
 
     }
 
