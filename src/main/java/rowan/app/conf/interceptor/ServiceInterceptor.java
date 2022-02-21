@@ -29,9 +29,9 @@ public class ServiceInterceptor implements HandlerInterceptor {
 
         }else{
 
-            Services services = appService.getService(service);
+            //Services services = appService.getService(service);
 
-            request.setAttribute("service", services);
+            //request.setAttribute("service", services);
 
         }
 
