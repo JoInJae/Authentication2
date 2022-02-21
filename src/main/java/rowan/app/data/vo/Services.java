@@ -18,8 +18,8 @@ public class Services {
     @Column(name = "service_type", columnDefinition = "VARCHAR(10)", nullable = false)
     private String type;
 
-    @Column(name = "service_server_address", columnDefinition = "VARCHAR(10)", nullable = false)
-    private String server;
+    @Column(name = "service_path", columnDefinition = "VARCHAR(10)", nullable = false)
+    private String path;
 
     @Column(name = "service_etc", columnDefinition = "VARCHAR(100)")
     private String etc;

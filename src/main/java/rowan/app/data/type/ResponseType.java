@@ -11,6 +11,8 @@ public enum ResponseType {
 
     PARAMETER_WRONG(40001, "잘못된 파라미터"),
 
+    SERVICE_TYPE_UNKNOWN(40010, "알려지지않은 서비스 유형"),
+
     TOKEN_INVALID(40101, "토큰 유효성"),
 
     TOKEN_TIMEOUT(40102, "토큰 시간 초과"),

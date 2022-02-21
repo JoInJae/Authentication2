@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface ServicesRepository extends JpaRepository<Services, String> {
 
-    Optional<Services> getByName(String name);
-    boolean existByType(String type);
+    Optional<Services> findByType(String type);
+
 
 }

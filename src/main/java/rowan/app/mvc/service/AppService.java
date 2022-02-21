@@ -1,7 +1,9 @@
 package rowan.app.mvc.service;
 
+import rowan.app.data.vo.Services;
+
 public interface AppService {
 
-    boolean checkService();
+    Services getService(String type);
 
 }
