@@ -1,6 +1,8 @@
 package rowan.app.mvc.web;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Test;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,13 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class IndexController {
 
-    @RequestMapping(value = "/auth", method = RequestMethod.GET)
-    private Response index(){
+    @RequestMapping(value = "/auth", method = {RequestMethod.GET, RequestMethod.POST})
+    private Response index(@RequestBody Param param){
 
         return Response.set(ResponseType.SUCCESS);
 
     }
 
+    @Getter
+    public static class Param{
+        private String abc;
+    }
 
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
     private ModelAndView route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
