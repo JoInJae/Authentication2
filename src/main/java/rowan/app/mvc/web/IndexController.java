@@ -23,7 +23,7 @@ public class IndexController {
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
     private ModelAndView route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
 
-        String path = "https://api.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
+        String path = "http://ROWAN-ALB-24769158.ap-northeast-2.elb.amazonaws.com" + request.getServletPath().replaceFirst("route", service.getPath());
 
         return new ModelAndView("redirect:"+path);
 
