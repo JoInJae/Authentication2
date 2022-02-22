@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class IndexController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
     private Response index(){
 
         return Response.set(ResponseType.SUCCESS);
