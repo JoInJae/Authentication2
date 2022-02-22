@@ -24,6 +24,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
+        System.out.println(request.getServletPath());
+        System.out.println(" PATH  ");
         String authorization = request.getHeader("Authorization");
 
         if(authorization != null && authorization.startsWith("Bearer ")){
