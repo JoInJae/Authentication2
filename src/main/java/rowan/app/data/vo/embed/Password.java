@@ -1,5 +1,6 @@
 package rowan.app.data.vo.embed;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.apache.commons.lang3.RandomStringUtils;
 import javax.persistence.Transient;
@@ -7,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@EqualsAndHashCode
 public class Password {
 
     @Getter
