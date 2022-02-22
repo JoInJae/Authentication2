@@ -22,13 +22,6 @@ public class ControllerAdvice {
 
     private final UserService userService;
 
-    @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
-    public void http_exception(CommonException e){
-
-        throw new WrongParameterException();
-
-    }
-
     @ExceptionHandler({WrongParameterException.class, MissingRequiredElementException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Response bad_request_exception(CommonException e){

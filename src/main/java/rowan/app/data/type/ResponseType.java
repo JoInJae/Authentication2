@@ -9,6 +9,8 @@ public enum ResponseType {
 
     SUCCESS(20000, "성공"),
 
+    ERROR(50000, "에러 발생"),
+
     PARAMETER_WRONG(40001, "잘못된 파라미터"),
 
     REQUIRED_ELEMENT_MISSING(40002, "필수적인 요소 누락"),
