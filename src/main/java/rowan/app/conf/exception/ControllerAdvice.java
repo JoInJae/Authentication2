@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import rowan.app.conf.exception.client.MissingRequiredElementException;
 import rowan.app.conf.exception.client.login.InactiveUserException;
 import rowan.app.conf.exception.client.WrongParameterException;
 import rowan.app.conf.exception.client.login.WrongUserIdException;
@@ -19,7 +20,7 @@ public class ControllerAdvice {
 
     private final UserService userService;
 
-    @ExceptionHandler({WrongParameterException.class})
+    @ExceptionHandler({WrongParameterException.class, MissingRequiredElementException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Response wrong_key_exception(CommonException e){
 

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import rowan.app.conf.exception.client.MissingRequiredElementException;
 import rowan.app.conf.exception.client.WrongParameterException;
 import rowan.app.data.vo.Services;
 import rowan.app.mvc.service.AppService;
@@ -21,17 +22,17 @@ public class ServiceInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String service = request.getHeader("x-api-service");
+        String serviceType = request.getHeader("x-api-service");
 
-        if(service == null){
+        if(serviceType == null){
 
-            throw new WrongParameterException();
+            throw new MissingRequiredElementException();
 
         }else{
 
-            //Services services = appService.getService(service);
+            Services service = appService.getService(serviceType);
 
-            //request.setAttribute("service", services);
+            request.setAttribute("service", service);
 
         }
 

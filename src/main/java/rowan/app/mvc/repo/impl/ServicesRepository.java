@@ -11,5 +11,4 @@ public interface ServicesRepository extends JpaRepository<Services, String> {
 
     Optional<Services> findByType(String type);
 
-
 }
