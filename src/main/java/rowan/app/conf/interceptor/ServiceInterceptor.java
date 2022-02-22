@@ -20,9 +20,7 @@ public class ServiceInterceptor implements HandlerInterceptor {
     private final AppService appService;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        System.out.println(request.getContextPath());
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
 
         String serviceType = request.getHeader("x-api-service");
 
