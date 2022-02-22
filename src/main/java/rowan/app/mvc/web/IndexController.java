@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class IndexController {
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     private Response index(){
 
         return Response.set(ResponseType.SUCCESS);
@@ -23,7 +23,7 @@ public class IndexController {
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
     private ModelAndView route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
 
-        String path = request.getServletPath().replaceFirst("route", service.getPath());
+        String path = "https://api.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
 
         return new ModelAndView("redirect:"+path);
 
