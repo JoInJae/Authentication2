@@ -19,8 +19,8 @@ public class IndexController {
 
         return Response.set(ResponseType.SUCCESS);
 
-    }
 
+    }
 
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.TEMPORARY_REDIRECT)
@@ -28,7 +28,11 @@ public class IndexController {
 
         String path = "https://api.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
 
-        return new ModelAndView("redirect:"+path);
+        ModelAndView mav = new ModelAndView("redirect:"+path);
+
+        mav.addObject("userId", "userID");
+
+        return mav;
 
     }
 

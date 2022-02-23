@@ -32,6 +32,14 @@ public class ControllerAdvice {
 
     @ExceptionHandler({NotSupportTokenFormException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Response service_exception(CommonException e){
+
+        return Response.set(e.getResponseType());
+
+    }
+
+    @ExceptionHandler({NotSupportTokenFormException.class})
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Response token_exception(CommonException e){
 
         return Response.set(e.getResponseType());
