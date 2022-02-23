@@ -2,7 +2,6 @@ package rowan.app.mvc.web;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Test;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,7 +34,6 @@ public class IndexController {
         return new ModelAndView("redirect:"+path);
 
     }
-
 
 
 }
