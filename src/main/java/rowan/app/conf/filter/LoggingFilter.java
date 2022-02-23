@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Log4j2
-@WebFilter(urlPatterns = "/**")
+@WebFilter(urlPatterns = "/*")
 @RequiredArgsConstructor
 public class LoggingFilter extends OncePerRequestFilter {
 
@@ -35,7 +35,7 @@ public class LoggingFilter extends OncePerRequestFilter {
         long end = System.currentTimeMillis();
 
         log.info("\n" +
-                        "[REQUEST] [{}] [{}] ({}) {}s \n" +
+                        "{} {} - {}({}s) \n" +
                         "Headers : {}\n" +
                         "Request : {}\n" +
                         "Response : {}\n",

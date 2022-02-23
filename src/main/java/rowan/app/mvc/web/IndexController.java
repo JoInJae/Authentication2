@@ -1,6 +1,5 @@
 package rowan.app.mvc.web;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
