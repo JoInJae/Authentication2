@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Log4j2
-@WebFilter(urlPatterns = "/auth")
+@WebFilter(urlPatterns = "/**")
 @RequiredArgsConstructor
 public class LoggingFilter extends OncePerRequestFilter {
 
