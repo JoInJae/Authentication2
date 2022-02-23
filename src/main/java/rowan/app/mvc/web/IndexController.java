@@ -15,15 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @RequestMapping(value = "/auth", method = {RequestMethod.GET, RequestMethod.POST})
-    private Response index(@RequestBody Param param){
+    private Response index(){
 
         return Response.set(ResponseType.SUCCESS);
 
-    }
-
-    @Getter
-    public static class Param{
-        private String abc;
     }
 
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
