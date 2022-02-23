@@ -24,11 +24,11 @@ public class IndexController {
 
     @RequestMapping(value = "/route/**", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.TEMPORARY_REDIRECT)
-    private String route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
+    private ModelAndView route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
 
         String path = "https://api.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
 
-        return "redirect:"+path;
+        return new ModelAndView("redirect:"+path);
 
     }
 
