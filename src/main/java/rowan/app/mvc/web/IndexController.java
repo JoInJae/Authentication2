@@ -26,7 +26,7 @@ public class IndexController {
     @ResponseStatus(HttpStatus.TEMPORARY_REDIRECT)
     private ModelAndView route(HttpServletRequest request, @RequestAttribute(name = "service") Services service, RedirectAttributes redirectAttributes){
 
-        String path = "https://api.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
+        String path = "https://internal.super-brain.co.kr" + request.getServletPath().replaceFirst("route", service.getPath());
 
         ModelAndView mav = new ModelAndView("redirect:"+path);
 
